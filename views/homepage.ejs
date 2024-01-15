@@ -75,7 +75,7 @@
             document.querySelector("h1").innerHTML = `Hello ${userName}, Welcome to my App`;
         }
 
-        const socket = io("http://localhost:5009");
+        const socket = io("https://oluchi-chat-app.onrender.com");
 
         socket.on("message", (data) => {
             const messageList = document.querySelector("#messageList");
