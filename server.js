@@ -36,9 +36,44 @@
 // console.log(`listening on port ${port}`)
 // })
 
+// const express = require("express");
+// const http = require("http");
+// const socketIO = require("socket.io"); 
+
+// const app = express();
+// const server = http.createServer(app);
+// const io = socketIO(server, {
+//     cors: {
+//         origin: "https://oluchi-chat-app.onrender.com",
+//         methods: ["GET", "POST"],
+//     },
+// });
+
+// app.set("view engine", "ejs");
+
+// app.get("/", (req, res) => {
+//     res.render('homepage');
+// });
+
+// io.on("connection", (socket) => {
+//     console.log(`Socket connected: ${socket.id}`);
+
+//     socket.on("message", (data) => {
+//         socket.broadcast.emit("message", data);
+//     });
+// });
+
+// const port = 5009;
+
+// server.listen(port, () => {
+//     console.log(`Server listening on port ${port}`);
+// });
+
+
+
 const express = require("express");
 const http = require("http");
-const socketIO = require("socket.io"); 
+const socketIO = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
@@ -59,7 +94,7 @@ io.on("connection", (socket) => {
     console.log(`Socket connected: ${socket.id}`);
 
     socket.on("message", (data) => {
-        socket.broadcast.emit("message", data);
+        io.emit("message", data); 
     });
 });
 
